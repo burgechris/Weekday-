@@ -10,5 +10,5 @@ export function getDays(num) {
    ];
 
   var daysMap = new Map(days)
-  return daysMap.get(num);
+  return daysMap.get(num % 7);
 }

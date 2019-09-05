@@ -6,3 +6,10 @@ describe('dayConverter', function() {
     expect(getDays(num)).toEqual('Monday');
   })
 })
+
+describe('modDays', function() {
+  it('should get correct day based on the number of days', function() {
+    var num = 10;
+    expect(getDays(num)).toEqual('Wednesday');
+  })
+})
