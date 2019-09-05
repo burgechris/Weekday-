@@ -12,3 +12,8 @@ export function getDays(num) {
   var daysMap = new Map(days)
   return daysMap.get(num % 7);
 }
+export function isLeapYear(year) {
+  if (year % 400 === 0) {
+    return true;
+  }
+}
