@@ -1,4 +1,4 @@
-export function getDays(num) {
+export function getDays(daysElapsed) {
   const days = [
      [1, 'Monday'],
      [2, 'Tuesday'],
@@ -8,9 +8,8 @@ export function getDays(num) {
      [6, 'Saturday'],
      [7, 'Sunday']
    ];
-
   var daysMap = new Map(days)
-  return daysMap.get(num % 7);
+  return daysMap.get((daysElapsed % 7)+1);
 }
 
 export function isLeapYear(year) {
@@ -37,7 +36,7 @@ export function countLeapYear(year) {
 }
 
 export function yearsToDays(year) {
-  let days = 0;
+  let days = 0; //not sure about this
 
   for (let i = 1900; i < year; i++) {
     if (isLeapYear(i)) {
