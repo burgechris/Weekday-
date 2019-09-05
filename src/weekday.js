@@ -13,7 +13,13 @@ export function getDays(num) {
   return daysMap.get(num % 7);
 }
 export function isLeapYear(year) {
+  let leapYear = false;
   if (year % 400 === 0) {
-    return true;
+    leapYear = true;
+  } else if(year % 100 === 0){
+    leapYear = false;
+  } else if(year % 4 === 0){
+    leapYear = true;
   }
+  return leapYear;
 }

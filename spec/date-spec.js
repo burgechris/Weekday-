@@ -19,4 +19,13 @@ describe('leapYear', function() {
     var year = 2000;
     expect(isLeapYear(year)).toEqual(true);
   })
+  it('it should not be a leap year if the year is divisible by 100', function() {
+    var year = 1900;
+    expect(isLeapYear(year)).toEqual(false);
+  })
+  it('should not be a leap year if the year is divisible by 4', function() {
+    var year = 1904;
+    expect(isLeapYear(year)).toEqual(true);
+  })
+
 })
