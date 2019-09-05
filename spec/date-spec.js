@@ -1,4 +1,4 @@
-import { getDays, isLeapYear, countLeapYear, yearsToDays } from '../src/weekday.js';
+import { getDays, isLeapYear, countLeapYear, yearsToDays, daysElapsedInYear, totalDaysElapsed } from '../src/weekday.js';
 
 describe('dayConverter', function() {
   it('should get correct day string based on number from map', function() {
@@ -52,4 +52,35 @@ describe('test that we can get the correct day of the work for January 1 for any
     let year = 1901;
     expect(getDays(yearsToDays(year))).toEqual('Tuesday');
   })
+})
+
+describe('test the number of days elapsed in the current year', function() {
+  it('should return the number of days if in the first month',function() {
+    let year = 1900;
+    let month = 1;
+    let day = 14;
+    expect(daysElapsedInYear(month, day, year)).toEqual(13);
+  })
+  it('should return the number of days elaspsed for a leap year if the date is after Feb',function() {
+    let year = 1904;
+    let month = 12;
+    let day = 31;
+    expect(daysElapsedInYear(month, day, year)).toEqual(365);
+  })
+  it('should return the number of days and not add leasp day if not a leap year',function() {
+    let year = 1903;
+    let month = 12;
+    let day = 31;
+    expect(daysElapsedInYear(month, day, year)).toEqual(364);
+  })
+})
+
+describe('test that totalDaysElapsed computes correctly', function() {
+  it('tests that a date computes the correct day of week', function(){
+    let month = 4;
+    let day = 28;
+    let year = 1995;
+    expect(getDays(totalDaysElapsed(month, day, year))).toEqual('Friday');
+  })
+
 })

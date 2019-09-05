@@ -36,7 +36,7 @@ export function countLeapYear(year) {
 }
 
 export function yearsToDays(year) {
-  let days = 0; //not sure about this
+  let days = 0;
 
   for (let i = 1900; i < year; i++) {
     if (isLeapYear(i)) {
@@ -46,4 +46,37 @@ export function yearsToDays(year) {
     }
   }
   return days;
+}
+
+export function daysElapsedInYear(month, day, year) {
+  const calendarDays = [
+    [1, 0],
+    [2, 31],
+    [3, 59],
+    [4, 90],
+    [5, 120],
+    [6, 151],
+    [7, 181],
+    [8, 212],
+    [9, 243],
+    [10, 273],
+    [11, 304],
+    [12, 334],
+  ];
+  let monthMap = new Map(calendarDays);
+  let days = 0;
+  if (!(isLeapYear(year))) {
+    days = monthMap.get(month) + day -1;
+  } else if (month > 2){
+    days = monthMap.get(month) + day;
+  } else {
+    days = monthMap.get(month) + day -1;
+  }
+  return days;
+}
+
+export function totalDaysElapsed(month, day, year) {
+  let totalDays = 0;
+  totalDays = daysElapsedInYear(month, day, year) + yearsToDays(year);
+  return totalDays;
 }
